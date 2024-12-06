@@ -12,3 +12,5 @@ export async function POST(request: Request) {
     data: body 
   })
 }
+
+export const runtime = 'edge';
