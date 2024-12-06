@@ -1,12 +1,39 @@
-import React from 'react'
+'use client'
 
-function page() {
+import { useEffect, useState } from "react"
 
-  const usuario = 'Juanito'
+type metadataIdeas = {
+  id: string,
+  title: string,
+  description: string
+}
+
+function Dashboard() {
+
+  const [metadata, setMetadata] = useState<metadataIdeas | null>(null)
+
+  useEffect(() => {
+    const getData = async () => {
+      await fetch('https://test.ideasllaneras.com/items/global')
+        .then(response => response.json())
+        .then(data => {
+          console.log( data.data.description )
+          setMetadata(data.data)
+        })
+        .catch( err => {
+          console.log({ err })
+        })
+    }
+
+    getData()
+  },[])
 
   return (
-    <div>{ `Bienvenido a Kinder ${usuario}` }</div>
+    <>
+      <div>Dashboard</div>
+      <p>{ metadata ? metadata.description : 'No hay datos' }</p>
+    </>
   )
 }
 
-export default page
+export default Dashboard
