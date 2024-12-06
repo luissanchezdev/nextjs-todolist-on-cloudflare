@@ -2,7 +2,15 @@
 const { setupDevPlatform } = require('@cloudflare/next-on-pages/next-dev');
 
 
-const nextConfig = {}
+const nextConfig = {
+  // Habilitar el output standalone para Cloudflare
+  output: 'standalone',
+  
+  // Configurar el runtime de Edge
+  experimental: {
+  }
+}
+
 
 const cloudFlareSetupDevPlatform = async () => {
   await setupDevPlatform();

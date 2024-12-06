@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server'
+
+export const runtime = 'edge'
  
 export async function GET() {
   return NextResponse.json({ message: 'Hola Mundo' })
@@ -12,5 +14,3 @@ export async function POST(request: Request) {
     data: body 
   })
 }
-
-export const runtime = 'edge';
